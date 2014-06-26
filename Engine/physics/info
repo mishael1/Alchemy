@@ -1,0 +1,48 @@
+Introduction
+			physics is the package that contains everything needed to run a
+		simulation of the physics the game implements.
+INPUT 		the package recieves the initial locations of balls 
+		and special forces/reaction performed by the player.
+OUTPUT 		the package ticks all the balls as they should be,
+		and the locations are sent to the graphics package.
+		additionaly, special events are sent to the graphics package for
+		effects. The interaction of the player's body balls with the world
+		are sent to the GUI package for health bar, etc
+Notes		physics is obliged to save as much CPU and use as little rapid memory
+		as possible. Therefor, 2 levels of containment of the information are used:
+Chunk 		the balls are contained inside of chunks. each chunk saves the balls
+		that are within its volume in one of a set of ARRAYS. each for a different
+		ball size
+Archive		the chunks are handled by the Archive. the archive is responsible to 
+		make sure chunks are available in the rapid memory before they are needed,
+		and that they are stored in the hard drive when out of action
+		
+		
+		/*
+			case 1:	//ignore case
+				break;
+			case 2://heat conduct
+				heatTransfer(A,B);
+				break;
+			case 3://Oscillator
+				radialForceR(A,B,-1);
+				break;
+			case 4://Oscillator with friction
+				radialForceR(A,B,-1);
+				radialFriction(A,B);
+			case 5://Oscillator with friction and heat conduct
+				radialForceR(A,B,-1);
+				radialFriction(A,B);
+				heatTransfer(A,B);				
+				break;
+			case 10://reject, no friction force is proportional to 1/r^3
+				heatTransfer(A,B);
+				radialForceR(A,B, 1/(R2*R2));
+				break;
+			case 11://reject with friction force is proportional to 1/r^3
+				radialForceR(A,B, 1/(R2*R2));
+				radialFriction(A,B);
+				heatTransfer(A,B);
+				break;
+			}
+		*/.
